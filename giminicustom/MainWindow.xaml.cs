@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.NetworkInformation;
-using DotRas;
 
 
 
@@ -56,7 +55,7 @@ namespace giminicustom
 
             if (reply.Status == IPStatus.Success)
             {
-                label1.Content =   "延时：" + reply.RoundtripTime + "ms";
+                label1.Content =   "往返时间：" + reply.RoundtripTime + "ms";
             }
             else
             {
