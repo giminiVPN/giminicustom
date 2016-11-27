@@ -133,7 +133,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\GeminiVPN.Core\GeminiVPN.Core.csproj">
+      <Project>{3fd874bd-9df9-40af-a95d-b7711c82fb35}</Project>
+      <Name>GeminiVPN.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
