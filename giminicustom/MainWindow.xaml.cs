@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.NetworkInformation;
+
+
+
 
 namespace giminicustom
 {
@@ -37,17 +41,37 @@ namespace giminicustom
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
+            this.lst_PingResult.Items.Clear();
+
+            string ipStr = "service-public1.universe.robertsspaceindustries.com";
+            Ping pingSender = new Ping();
+            PingOptions options = new PingOptions();
+            options.DontFragment = true;
+            string data = "test data aaaa";
+            byte[] buffer = Encoding.ASCII.GetBytes(data);
+            int timeout = 1000;
+
+            PingReply reply = pingSender.Send(ipStr, timeout);
+
+            if (reply.Status == IPStatus.Success)
+            {
+                lst_PingResult.Items.Add("主机地址：" + reply.Address.ToString());
+                lst_PingResult.Items.Add("往返时间：" + reply.RoundtripTime);
+
+
+            }
+            else
+                lst_PingResult.Items.Add(reply.Status.ToString());
 
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        }
 
-            BitmapImage bi = new BitmapImage();
-            bi.BeginInit();
-            bi.UriSource = new Uri(@"C:\Users\ah435\Documents\visual studio 2015\Projects\giminicustom\giminicustom\2016.png", UriKind.RelativeOrAbsolute);
-            bi.EndInit();
-            image.Source = bi;
+        
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        
         }
     }
 }
