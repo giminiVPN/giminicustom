@@ -55,8 +55,7 @@ namespace giminicustom
 
             if (reply.Status == IPStatus.Success)
             {
-                label1.Content = "主机地址：" + reply.Address.ToString() + Environment.NewLine +
-                                 "往返时间：" + reply.RoundtripTime;
+                label1.Content =   "往返时间：" + reply.RoundtripTime + "ms";
             }
             else
             {

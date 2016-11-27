@@ -22,7 +22,7 @@
         <Image x:Name="image" HorizontalAlignment="Left" Height="229" VerticalAlignment="Top" Width="485" Grid.Column="1" Margin="29.6,10,0,0" Source="2016.png">
         </Image>
         <Button x:Name="button" Content="Ping Test for &#xD;&#xA;Star Citizen" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Grid.Column="1" Margin="9.6,270,0,0" Height="53" Click="button_Click" FontSize="16"/>
-        <Label x:Name="label1" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="160,270,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.275,-1.346" Height="64" Width="413" FontSize="20"/>
+        <Label x:Name="label1" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="159.6,270,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.275,-1.346" Height="64" Width="265" FontSize="20"/>
         <Label x:Name="label_Copy1" Content="*加密" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,119,0,0" Width="88" Height="28" FontSize="16"/>
         <Label x:Name="label_Copy2" Content="*协议" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,147,0,0" Width="88" Height="28" FontSize="16"/>
         <Label x:Name="label_Copy3" Content="*混淆" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,175,0,0" Width="88" Height="28" FontSize="16"/>
