@@ -41,7 +41,7 @@ namespace giminicustom
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            this.lst_PingResult.Items.Clear();
+            this.label1.Content = null;
 
             string ipStr = "service-public1.universe.robertsspaceindustries.com";
             Ping pingSender = new Ping();
@@ -55,23 +55,18 @@ namespace giminicustom
 
             if (reply.Status == IPStatus.Success)
             {
-                lst_PingResult.Items.Add("主机地址：" + reply.Address.ToString());
-                lst_PingResult.Items.Add("往返时间：" + reply.RoundtripTime);
-
-
+                label1.Content = "主机地址：" + reply.Address.ToString() + Environment.NewLine +
+                                 "往返时间：" + reply.RoundtripTime;
             }
             else
-                lst_PingResult.Items.Add(reply.Status.ToString());
-
+            {
+                label1.Content = reply.Status.ToString();
+            }
         }
-
-        }
-
-        
 
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-        
+
         }
     }
 }
