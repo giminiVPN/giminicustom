@@ -13,22 +13,14 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="button1" Content="取消" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="150,439,0,0" Height="38" FontSize="20"/>
         <Button x:Name="button1_Copy" Content="确定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="10,439,0,0" Height="38" FontSize="20"/>
-        <Label x:Name="label" Content="服务器ip" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,25,0,0" Width="72" Height="28" FontSize="16"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Margin="103,30,0,0"/>
-        <Label x:Name="label_Copy" Content="服务器端口" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,58,0,0" Width="88" Height="28" FontSize="16"/>
+        <Label x:Name="label_Copy" Content="账户" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,63,0,0" Width="69" Height="28" FontSize="16"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Margin="103,63,0,0" TextChanged="textBox_Copy_TextChanged"/>
         <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Margin="103,96,0,0"/>
-        <CheckBox x:Name="checkBox" Content="*密码" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,96,0,0" Height="23" Width="76" Checked="checkBox_Checked" FontSize="16"/>
+        <CheckBox x:Name="checkBox" Content="密码" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,96,0,0" Height="23" Width="76" Checked="checkBox_Checked" FontSize="16"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="229" VerticalAlignment="Top" Width="485" Grid.Column="1" Margin="29.6,10,0,0" Source="2016.png">
         </Image>
         <Button x:Name="button" Content="星际公民服务器&#xD;&#xA;Ping测试" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" Grid.Column="1" Margin="9.6,270,0,0" Height="53" Click="button_Click" FontSize="16"/>
         <Label x:Name="label1" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="159.6,270,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.275,-1.346" Height="64" Width="265" FontSize="20"/>
-        <Label x:Name="label_Copy1" Content="*加密" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,119,0,0" Width="88" Height="28" FontSize="16"/>
-        <Label x:Name="label_Copy2" Content="*协议" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,147,0,0" Width="88" Height="28" FontSize="16"/>
-        <Label x:Name="label_Copy3" Content="*混淆" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,175,0,0" Width="88" Height="28" FontSize="16"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="103,126,0,0" VerticalAlignment="Top" Width="173"/>
-        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="103,154,0,0" VerticalAlignment="Top" Width="173"/>
-        <ComboBox x:Name="comboBox2" HorizontalAlignment="Left" Margin="103,182,0,0" VerticalAlignment="Top" Width="173"/>
 
     </Grid>
 </Window>
