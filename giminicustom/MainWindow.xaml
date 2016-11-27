@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:giminicustom"
         mc:Ignorable="d"
-        Title="MainWindow" Height="548.25" Width="1049.999">
-    <Grid>
+        Title="MainWindow" Height="437.85" Width="875.999">
+    <Grid Margin="0,0,3.6,-0.8">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="276*"/>
             <ColumnDefinition Width="629*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="button1" Content="取消" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="150,439,0,0" Height="38" FontSize="20"/>
-        <Button x:Name="button1_Copy" Content="确定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="10,439,0,0" Height="38" FontSize="20"/>
+        <Button x:Name="button1" Content="取消" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="151,345,0,0" Height="38" FontSize="20"/>
+        <Button x:Name="button1_Copy" Content="确定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="10,345,0,0" Height="38" FontSize="20"/>
         <Label x:Name="label_Copy" Content="账户" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,63,0,0" Width="69" Height="28" FontSize="16"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Margin="103,63,0,0" TextChanged="textBox_Copy_TextChanged"/>
-        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" Margin="103,96,0,0"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Margin="103,63,0,0" TextChanged="textBox_Copy_TextChanged"/>
+        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Margin="103,96,0,0"/>
         <CheckBox x:Name="checkBox" Content="密码" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,96,0,0" Height="23" Width="76" Checked="checkBox_Checked" FontSize="16"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="229" VerticalAlignment="Top" Width="485" Grid.Column="1" Margin="29.6,10,0,0" Source="2016.png">
         </Image>
