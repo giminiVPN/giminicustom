@@ -13,9 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.NetworkInformation;
-using DotRas;
-
-
+using System.Diagnostics;
 
 namespace giminicustom
 {
@@ -66,6 +64,11 @@ namespace giminicustom
         private void textBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            Process.GetCurrentProcess().Kill();
         }
     }
 }
