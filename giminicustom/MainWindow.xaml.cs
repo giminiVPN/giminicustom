@@ -53,7 +53,7 @@ namespace giminicustom
 
             if (reply.Status == IPStatus.Success)
             {
-                label1.Content =   "往返时间：" + reply.RoundtripTime + "ms";
+                label1.Content = "往返时间：" + reply.RoundtripTime + "ms";
             }
             else
             {
@@ -70,5 +70,41 @@ namespace giminicustom
         {
             Process.GetCurrentProcess().Kill();
         }
+
+        private void button1_Copy_Click(object sender, RoutedEventArgs e)
+        {
+
+        private static string WinDir = Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\";
+        private static string RasDialFileName = "rasdial.exe";
+        private static string VPNPROCESS = WinDir + RasDialFileName;
+        public string IPToPing { get; set; }
+        // VPN名称
+        public string VPNName { get; set; }
+        // VPN用户名
+        public string UserName { get; set; }
+        // VPN密码
+        public string PassWord { get; set; }
+
+        public VPNHelper(string _vpnIP, string _vpnName, string _userName, string _passWord)
+        {
+            this.IPToPing = "111.111.111.111";
+            this.VPNName = "123456";
+            this.UserName = "123456";
+            this.PassWord = "123456";
+        }
+
+        /// 尝试连接VPN(默认VPN)
+        /// </summary>
+        /// <returns></returns>
+        public void TryConnectVPN()
+        {
+            this.TryConnectVPN(this.VPNName, this.UserName, this.PassWord);
+        }
+
+        private void TryConnectVPN(string vPNName, string userName, string passWord)
+        {
+            throw new NotImplementedException();
+        }
+
     }
-}
+    }
