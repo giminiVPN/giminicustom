@@ -74,6 +74,8 @@ namespace giminicustom
         private void button1_Copy_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
         private static string WinDir = Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\";
         private static string RasDialFileName = "rasdial.exe";
         private static string VPNPROCESS = WinDir + RasDialFileName;
@@ -85,7 +87,7 @@ namespace giminicustom
         // VPN密码
         public string PassWord { get; set; }
 
-        public VPNHelper(string _vpnIP, string _vpnName, string _userName, string _passWord)
+        public void VPNHelper(string _vpnIP, string _vpnName, string _userName, string _passWord)
         {
             this.IPToPing = "111.111.111.111";
             this.VPNName = "123456";
@@ -107,4 +109,4 @@ namespace giminicustom
         }
 
     }
-    }
+}
