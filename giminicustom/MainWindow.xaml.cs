@@ -241,8 +241,6 @@ namespace giminicustom
                 return false;
             }
 
-
-
             public void CreateOrUpdate()
             {
                 using (var dialer = new RasDialer())
@@ -265,6 +263,14 @@ namespace giminicustom
                     }
                 }
             }
+
+            public void TryCreateOrUpdate()
+            {
+
+               
+
+            }
+
 
         }
     }
