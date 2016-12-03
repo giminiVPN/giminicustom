@@ -14,6 +14,10 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Net.NetworkInformation;
 using System.Diagnostics;
+using DotRas;
+using System.IO;
+using VPNConnector;
+using System.Threading;
 
 namespace giminicustom
 {
@@ -74,39 +78,194 @@ namespace giminicustom
         private void button1_Copy_Click(object sender, RoutedEventArgs e)
         {
 
+
         }
 
-        private static string WinDir = Environment.GetFolderPath(Environment.SpecialFolder.System) + @"\";
-        private static string RasDialFileName = "rasdial.exe";
-        private static string VPNPROCESS = WinDir + RasDialFileName;
-        public string IPToPing { get; set; }
-        // VPN名称
-        public string VPNName { get; set; }
-        // VPN用户名
-        public string UserName { get; set; }
-        // VPN密码
-        public string PassWord { get; set; }
 
-        public void VPNHelper(string _vpnIP, string _vpnName, string _userName, string _passWord)
+
+
+
+
+        public class VPNConnector
         {
-            this.IPToPing = "111.111.111.111";
-            this.VPNName = "123456";
-            this.UserName = "123456";
-            this.PassWord = "123456";
+            public VPNConnector(string serverAddress, string userName, string passWord)
+               : this(serverAddress, serverAddress, userName, passWord, Protocol.PPTP)
+            {
+
+            }
+            public VPNConnector(string serverAddress, string connectionName, string userName, string passWord)
+                : this(serverAddress, connectionName, userName, passWord, Protocol.PPTP)
+            {
+
+            }
+            public VPNConnector(string serverAddress, string connectionName, string userName, string passWord, Protocol protocal)
+            {
+                this.serverAddress = "106.187.35.127";
+                this.connectionName = "Japan";
+                this.userName = "Cribug";
+                this.passWord = "Cribug2016";
+                this.protocol = Protocol.PPTP;
+                this.rasDialFileName = System.IO.Path.Combine(WinDir, "rasdial.exe");
+            }
+
+            private static string WinDir = Environment.GetFolderPath(Environment.SpecialFolder.System);
+            private string rasDialFileName;
+            private readonly string serverAddress;
+            private readonly string connectionName;
+            private readonly string userName;
+            private readonly string passWord;
+            private readonly Protocol protocol;
+            private readonly static string allUserPhoneBookPath = RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.AllUsers);
+
+            public string RasDialFileName
+            {
+                get { return rasDialFileName; }
+                set
+                {
+                    if (File.Exists(value))
+                    {
+                        rasDialFileName = value;
+                    }
+
+                    throw new FileNotFoundException();
+                }
+            }
+
+
+            public bool IsActive
+            {
+                get
+                {
+                    using (Process myProcess = new Process())
+                    {
+                        myProcess.StartInfo.CreateNoWindow = true;
+                        myProcess.StartInfo.UseShellExecute = false;
+                        myProcess.StartInfo.RedirectStandardInput = true;
+                        myProcess.StartInfo.RedirectStandardOutput = true;
+                        myProcess.StartInfo.FileName = "cmd.exe";
+                        myProcess.Start();
+                        myProcess.StandardInput.WriteLine("ipconfig");
+                        myProcess.StandardInput.WriteLine("exit");
+                        myProcess.WaitForExit();
+
+                        string content = myProcess.StandardOutput.ReadToEnd();
+                        if (content.Contains("0.0.0.0"))
+                        {
+                            return true;
+                        }
+
+                        return false;
+                    }
+
+                }
+            }
+
+            public RasDevice RasDevice
+            {
+                get
+                {
+                    var name = Enum.GetName(typeof(Protocol), this.protocol);
+                    var rasDevice = RasDevice.GetDevices().FirstOrDefault(c => c.Name.Contains(name));
+                    if (rasDevice == null)
+                    {
+                        throw new Exception("No device found.");
+                    }
+                    return rasDevice;
+                }
+            }
+
+            public RasVpnStrategy RasVpnStrategy
+            {
+                get
+                {
+                    if (protocol == Protocol.PPTP)
+                    {
+                        return RasVpnStrategy.PptpFirst;
+                    }
+                    else
+                    {
+                        return RasVpnStrategy.IkeV2First;
+                    }
+                }
+            }
+
+            public bool WaitUntilActive(int timeOut = 10)
+            {
+                for (int i = 0; i < timeOut; i++)
+                {
+                    if (!this.IsActive)
+                    {
+                        Thread.Sleep(1000);
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            public bool WaitUntilInActive(int timeOut = 10)
+            {
+                for (int i = 0; i < timeOut; i++)
+                {
+                    if (this.IsActive)
+                    {
+                        Thread.Sleep(1000);
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            public bool TryConnect()
+            {
+                try
+                {
+                    string args = $"{serverAddress}{connectionName} {userName} {passWord}";
+                    ProcessStartInfo myProcess = new ProcessStartInfo(rasDialFileName, args);
+                    myProcess.CreateNoWindow = true;
+                    myProcess.UseShellExecute = false;
+                    Process.Start(myProcess);
+                }
+                catch (Exception Ex)
+                {
+                    Debug.Assert(false, Ex.ToString());
+                }
+
+                WaitUntilActive();
+                if (IsActive)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+
+
+
+
+
+
+
+
+
+
         }
 
-        /// 尝试连接VPN(默认VPN)
-        /// </summary>
-        /// <returns></returns>
-        public void TryConnectVPN()
-        {
-            this.TryConnectVPN(this.VPNName, this.UserName, this.PassWord);
-        }
 
-        private void TryConnectVPN(string vPNName, string userName, string passWord)
-        {
-            throw new NotImplementedException();
-        }
 
-    }
+
+
+
+
+
+
+        }
 }
