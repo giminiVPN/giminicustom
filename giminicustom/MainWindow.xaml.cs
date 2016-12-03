@@ -111,6 +111,7 @@ namespace giminicustom
             private readonly string passWord;
             private readonly Protocol protocol;
             private readonly static string allUserPhoneBookPath = RasPhoneBook.GetPhoneBookPath(RasPhoneBookType.AllUsers);
+            private bool _createOrUpdate;
 
             public string RasDialFileName
             {
@@ -266,11 +267,13 @@ namespace giminicustom
 
             public void TryCreateOrUpdate()
             {
-
-               
-
+                if (_createOrUpdate)
+                {
+                    return;
+                }
+                CreateOrUpdate();
+                _createOrUpdate = true;
             }
-
 
         }
     }
