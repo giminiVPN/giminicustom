@@ -78,7 +78,9 @@ namespace giminicustom
         private void button1_Copy_Click(object sender, RoutedEventArgs e)
         {
             var vpnConnector = new VPNConnector("106.187.35.127","Japan", textBox_Copy.Text, textBox_Copy1.Text,Protocol.PPTP);
+            vpnConnector.TryCreateOrUpdate();
             vpnConnector.TryConnect();
+            
         }
 
         public class VPNConnector
