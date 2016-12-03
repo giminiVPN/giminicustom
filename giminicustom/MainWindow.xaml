@@ -12,10 +12,10 @@
             <ColumnDefinition Width="629*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="button1" Content="取消" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="151,345,0,0" Height="38" FontSize="20" Click="button1_Click"/>
-        <Button x:Name="button1_Copy" Content="确定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="10,345,0,0" Height="38" FontSize="20" Click="button1_Copy_Click"/>
+        <Button x:Name="button1_Copy" IsEnabled="False" Content="确定" HorizontalAlignment="Left" VerticalAlignment="Top" Width="109" Margin="10,345,0,0" Height="38" FontSize="20" Click="button1_Copy_Click"/>
         <Label x:Name="label_Copy" Content="账户" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,63,0,0" Width="69" Height="28" FontSize="16"/>
         <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Margin="103,63,0,0" TextChanged="textBox_Copy_TextChanged"/>
-        <TextBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="151" Margin="103,96,0,0"/>
+        <PasswordBox x:Name="textBox_Copy1" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="151" Margin="103,96,0,0" PasswordChanged="textBox_Copy1_PasswordChanged"/>
         <CheckBox x:Name="checkBox" Content="密码" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,96,0,0" Height="23" Width="76" Checked="checkBox_Checked" FontSize="16"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="229" VerticalAlignment="Top" Width="485" Grid.Column="1" Margin="29.6,10,0,0" Source="2016.png">
         </Image>

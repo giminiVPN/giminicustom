@@ -29,16 +29,32 @@ namespace giminicustom
         public MainWindow()
         {
             InitializeComponent();
+            Closed += MainWindow_Closed;
+        }
+
+        // 窗口关闭时调用
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+
         }
 
         private void textBox_Copy_TextChanged(object sender, TextChangedEventArgs e)
         {
+            CheckUserNameAndPassword();
+        }
 
+        private void textBox_Copy1_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            CheckUserNameAndPassword();
+        }
+
+        private void CheckUserNameAndPassword()
+        {
+            button1_Copy.IsEnabled = !string.IsNullOrEmpty(textBox_Copy.Text) && !string.IsNullOrEmpty(textBox_Copy1.Password);
         }
 
         private void checkBox_Checked(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
@@ -77,7 +93,7 @@ namespace giminicustom
 
         private void button1_Copy_Click(object sender, RoutedEventArgs e)
         {
-            var vpnConnector = new VPNConnector("106.187.35.127","Japan", textBox_Copy.Text, textBox_Copy1.Text,Protocol.PPTP);
+            var vpnConnector = new VPNConnector("106.187.35.127", "Japan", textBox_Copy.Text, textBox_Copy1.Password, Protocol.PPTP);
             vpnConnector.TryCreateOrUpdate();
             vpnConnector.TryConnect();
             
@@ -278,5 +294,6 @@ namespace giminicustom
             }
 
         }
+
     }
 }
