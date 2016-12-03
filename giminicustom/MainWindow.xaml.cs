@@ -77,14 +77,9 @@ namespace giminicustom
 
         private void button1_Copy_Click(object sender, RoutedEventArgs e)
         {
-
-
+            var vpnConnector = new VPNConnector("127.0.0.1", textBox_Copy.Text, textBox_Copy1.Text);
+            vpnConnector.TryConnect();
         }
-
-
-
-
-
 
         public class VPNConnector
         {
@@ -130,7 +125,6 @@ namespace giminicustom
                     throw new FileNotFoundException();
                 }
             }
-
 
             public bool IsActive
             {
@@ -247,25 +241,6 @@ namespace giminicustom
                 return false;
             }
 
-
-
-
-
-
-
-
-
-
-
         }
-
-
-
-
-
-
-
-
-
-        }
+    }
 }
