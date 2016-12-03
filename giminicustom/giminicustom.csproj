@@ -91,6 +91,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="chnroutes-master\.project" />
+    <None Include="chnroutes-master\.pydevproject" />
+    <None Include="chnroutes-master\chnroutes.py" />
+    <None Include="chnroutes-master\chnroutesapp\app.yaml" />
+    <None Include="chnroutes-master\chnroutesapp\cron.yaml" />
+    <None Include="chnroutes-master\chnroutesapp\main.py" />
+    <None Include="chnroutes-master\chnroutesapp\models.py" />
+    <None Include="chnroutes-master\chnroutesapp\tasks\generate_all.py" />
+    <None Include="chnroutes-master\chnroutesapp\__init__.py" />
+    <None Include="chnroutes-master\README.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="2016.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="chnroutes-master\chnroutesapp\templates\index.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

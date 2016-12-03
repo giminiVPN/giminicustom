@@ -67,7 +67,7 @@ namespace giminicustom
             Ping pingSender = new Ping();
             PingOptions options = new PingOptions();
             options.DontFragment = true;
-            string data = "test data aaaa";
+            string data = "HelloFromChina";
             byte[] buffer = Encoding.ASCII.GetBytes(data);
             int timeout = 1000;
 
