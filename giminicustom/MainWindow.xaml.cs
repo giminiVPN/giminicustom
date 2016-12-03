@@ -77,7 +77,7 @@ namespace giminicustom
 
         private void button1_Copy_Click(object sender, RoutedEventArgs e)
         {
-            var vpnConnector = new VPNConnector("127.0.0.1", textBox_Copy.Text, textBox_Copy1.Text);
+            var vpnConnector = new VPNConnector("106.187.35.127","Japan", textBox_Copy.Text, textBox_Copy1.Text,Protocol.PPTP);
             vpnConnector.TryConnect();
         }
 
@@ -221,7 +221,7 @@ namespace giminicustom
             {
                 try
                 {
-                    string args = $"{serverAddress}{connectionName} {userName} {passWord}";
+                    string args = $"{connectionName} {userName} {passWord}";
                     ProcessStartInfo myProcess = new ProcessStartInfo(rasDialFileName, args);
                     myProcess.CreateNoWindow = true;
                     myProcess.UseShellExecute = false;
@@ -239,6 +239,31 @@ namespace giminicustom
                 }
 
                 return false;
+            }
+
+
+
+            public void CreateOrUpdate()
+            {
+                using (var dialer = new RasDialer())
+                using (var allUsersPhoneBook = new RasPhoneBook())
+                {
+                    allUsersPhoneBook.Open(true);
+                    if (allUsersPhoneBook.Entries.Contains(connectionName))
+                    {
+                        allUsersPhoneBook.Entries[connectionName].PhoneNumber = connectionName;
+                        allUsersPhoneBook.Entries[connectionName].VpnStrategy = RasVpnStrategy;
+                        allUsersPhoneBook.Entries[connectionName].Device = RasDevice;
+                        allUsersPhoneBook.Entries[connectionName].Update();
+                    }
+                    else
+                    {
+                        RasEntry entry = RasEntry.CreateVpnEntry(connectionName, serverAddress, RasVpnStrategy, RasDevice);
+                        allUsersPhoneBook.Entries.Add(entry);
+                        dialer.EntryName = connectionName;
+                        dialer.PhoneBookPath = allUserPhoneBookPath;
+                    }
+                }
             }
 
         }
