@@ -35,6 +35,8 @@ namespace giminicustom
         // 窗口关闭时调用
         private void MainWindow_Closed(object sender, EventArgs e)
         {
+            var vpnConnector = new VPNConnector("106.187.35.127", "Japan", textBox_Copy.Text, textBox_Copy1.Password, Protocol.PPTP);
+            vpnConnector.TryDelete();
 
         }
 
@@ -293,7 +295,47 @@ namespace giminicustom
                 _createOrUpdate = true;
             }
 
+            public bool TryDisconnect()
+            {
+                try
+                {
+                    string args = $@"{connectionName} /d";
+                    ProcessStartInfo myProcess = new ProcessStartInfo(rasDialFileName, args);
+                    myProcess.CreateNoWindow = true;
+                    myProcess.UseShellExecute = false;
+                    Process.Start(myProcess);
+                }
+                catch (Exception Ex)
+                {
+                    Debug.Assert(false, Ex.ToString());
+                }
+
+                WaitUntilInActive();
+                if (!IsActive)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            public void TryDelete()
+            {
+                using (var dialer = new RasDialer())
+                using (var allUsersPhoneBook = new RasPhoneBook())
+                {
+                    allUsersPhoneBook.Open(true);
+                    if (allUsersPhoneBook.Entries.Contains(connectionName))
+                    {
+                        TryDisconnect();
+                        WaitUntilInActive();
+                        allUsersPhoneBook.Entries.Remove(connectionName);
+                    }
+                }
+            }
+
         }
+
+
 
     }
 }
